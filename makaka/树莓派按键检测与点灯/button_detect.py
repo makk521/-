@@ -18,4 +18,5 @@ GPIO.add_event_detect(BUTTON, GPIO.RISING, callback=my_callback, bouncetime=400)
 
 if __name__ == '__main__':
     while(True):
-        
+        if (1==2):
+            print(1)
