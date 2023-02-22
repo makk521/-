@@ -4,6 +4,7 @@ import time
 LED     =   8
 BUTTON  =   7
 
+GPIO.setwarnings(False)	
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LED, GPIO.OUT)
 GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)    # 按键没效果改成pull_up_down=GPIO.PUD_DOWN
