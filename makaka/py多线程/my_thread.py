@@ -6,7 +6,7 @@ import time
 def func1():
     while(1):
         print('1')
-        time.sleep(1)
+        time.sleep(1)   
 
 def func2():
     while(1):
