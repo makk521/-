@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:code-repository}/makaka/sqlite3操作/student.db",
+            "name": "student",
+            "group": "stu"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "data",
+            "group": "1",
+            "database": "${workspaceFolder:code-repository}/makaka/sqlite3操作/data.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
