@@ -27,18 +27,36 @@
 
 
 
+# import asyncio
+
+# async def nested():
+#     return 42
+
+# async def main():
+#     # Nothing happens if we just call "nested()".
+#     # A coroutine object is created but not awaited,
+#     # so it *won't run at all*.
+#     nested()
+
+#     # Let's do it differently now and await it:
+#     print(await nested())  # will print "42".
+
+# asyncio.run(main())
+
+
+
+
 import asyncio
+import datetime
 
-async def nested():
-    return 42
+async def display_date():
+    loop = asyncio.get_running_loop()
+    print(loop,type(loop))
+    end_time = loop.time() + 5.0
+    while True:
+        print(datetime.datetime.now())
+        if (loop.time() + 1.0) >= end_time:
+            break
+        await asyncio.sleep(1)
 
-async def main():
-    # Nothing happens if we just call "nested()".
-    # A coroutine object is created but not awaited,
-    # so it *won't run at all*.
-    # nested()
-
-    # Let's do it differently now and await it:
-    print(await nested())  # will print "42".
-
-asyncio.run(main())
+asyncio.run(display_date())
