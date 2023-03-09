@@ -9,7 +9,7 @@ alias bt=bluetoothctl  # 重命名，将bluetoothctl命名为bt
 watch bluetoothctl list  # 循环跑指令，默认两秒一次
 dmesg  -w   # 打出系统log,且等待
 lsusb     # 列出当前usb设备
-journalctl -u  
+journalctl -u  # -f
 
 ```
 
