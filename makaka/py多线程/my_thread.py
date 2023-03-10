@@ -28,4 +28,8 @@ def func(msg):
 
 if __name__ == '__main__':
     Thread(target = func,args=("a")).start()
-    Thread(target = func,args=("b")).start()
+    # Thread(target = func,args=("b")).start()
+
+    while(1):
+        print(1)
+        time.sleep(1)
