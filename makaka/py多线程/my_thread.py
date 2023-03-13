@@ -27,5 +27,5 @@ if __name__ == '__main__':
 #         time.sleep(1)   
 
 # if __name__ == '__main__':
-#     Thread(target = func,args=("a")).start()
-#     Thread(target = func,args=("b")).start()
+#     Thread(target = func,args=("a",)).start()
+#     Thread(target = func,args=("b",)).start()
