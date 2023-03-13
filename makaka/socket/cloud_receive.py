@@ -35,7 +35,6 @@ def socket_service_data(address):
 
 
 if __name__ == '__main__':
-    # 初始化
     HOST = '10.0.12.13'
     BUFSIZ = 1024
     ADDR1 = (HOST, 7789)
