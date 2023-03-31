@@ -57,7 +57,8 @@ sudo nano btusb.c
 
 使用命令 ``lsusb``查询
 
-![1680249103693](https://file+.vscode-resource.vscode-cdn.net/Users/makaka/code-repository/makaka/%E8%93%9D%E7%89%99%E9%80%82%E9%85%8D%E5%99%A8%E5%8F%8Ausb/image/finish/1680249103693.png)
+![1680251896115](image/finish/1680251896115.png)
+
 
 3、可能不需要
 
