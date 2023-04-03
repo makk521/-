@@ -1,3 +1,6 @@
+'''
+pip install pyyaml
+'''
 import yaml
 
 with open("config.yaml", "r") as f:
