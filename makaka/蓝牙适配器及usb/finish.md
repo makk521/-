@@ -21,23 +21,27 @@ dmesg -w
 ## 搜索
 
 
+## 版本号区别
+
+操作系统版本为5.15.84的直接可以使用山泽的，即存在rtl8761b驱动。经过如下操作无效，即操作后也无法使用绿联的。
+
+操作系统为5.10.103的可以通过如下操作可以使用绿联和山泽的，但是无法直接使用山泽的（无法找到rtl8761b_fw.bin驱动)。
 
 
 ## 解决方案
 
-镜像：legacy()，内核为5.15.84的不太行。
+镜像：legacy()，操作系统版本为5.15.84的不太行。
 
 ![1680251162987](image/finish/1680251162987.png)
 
-1、下载对应内核
+1、下载对应操作系统内核
 
-使用 ``uname -r``查看内核版本下载对应的
+使用 ``uname -r``查看操作系统版本下载对应的
 
 ```
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.103.tar.xz
 tar xpvf linux-5.10.103.tar.xz
 ```
-
 
 2、更改 `` btusb.c``文件
 
@@ -59,11 +63,9 @@ sudo nano btusb.c
 
 ![1680251896115](image/finish/1680251896115.png)
 
-
 3、可能不需要
 
 4、编译
-
 
 ```
 make -C /lib/modules/$(uname -r)/build M=$(pwd) clean
@@ -83,7 +85,6 @@ sudo cp btusb.ko /lib/modules/$(uname -r)/kernel/drivers/bluetooth
 sudo apt-get install raspberrypi-kernel-headers
 ```
 
-
 5、重新加载
 
 ```
@@ -91,9 +92,7 @@ sudo modprobe -r btusb
 sudo modprobe -v btusb
 ```
 
-
 ![1680248821289](image/finish/1680248821289.png)
-
 
 6、解决驱动问题（此时无法扫描到)
 
@@ -107,8 +106,6 @@ mv rtl8761b_fw /lib/firmware/rtl_bt/rtl8761b_fw.bin
 sudo modprobe btusb
 sudo systemctl start bluetooth.service
 ```
-
-
 
 ## 参考
 
