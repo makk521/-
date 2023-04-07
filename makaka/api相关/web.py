@@ -1,13 +1,37 @@
-from flask import Flask
-import openai
-openai.api_key = "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"  # supply your API key however you choose
+'''
+简单的flask框架写的api,放在服务器上运行。
+'''
 
+from flask import Flask, request
+import openai
+openai.api_key = "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"  
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": "为什么天空是蓝色的!"}])
-    return completion.choices[0].message.content
+def ask_gpt(prompt):
+    '''
+    chatgpt的api调用。
+    参数:问题
+    返回:问题结果
+    '''
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+    message = response.choices[0].text.strip()
+    return message
 
-app.run(host='0.0.0.0')
+@app.route('/', methods=['POST'])
+def hello_world():
+    # question = request.form['question']
+    # print(question)
+    # return ask_gpt(question)
+    print(request.form)
+    return 'hello'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
