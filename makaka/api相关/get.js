@@ -1,11 +1,11 @@
 const fun = async function() {
-    let res = await  fetch('http://43.153.21.199:5000/',{
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({data: 'hello world'})
-    });
+    let res = await  fetch('http://43.153.21.199:5000/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({data: 'hello world'})
+        })
     let data = await res.json();
     console.log(data)
     
