@@ -27,8 +27,7 @@ class USB_DETECT:
         self.usb_name_lsusb = CONFIG['usb_name_lsusb']
         self.SINK_DETECT_STATUS = False
         self.USB_DETECT_STATUS = False
-        self.play_audio = vlc.MediaPlayer(self.test_mp3_path)
-        self.play_audio.play()
+
         
         pass
 
@@ -69,9 +68,24 @@ class USB_DETECT:
                 print('usb been plugged out')
             else:
                 pass
-
+    
+    def play_audio_loop(self):
+        '''
+        每隔一段时间查询是否播放,停止后重新播放。
+        '''
+        self.play_audio = vlc.MediaPlayer(self.test_mp3_path)
+        self.play_audio.play()
+        while True:
+            time.sleep(5)
+            STATUS_PLAY = self.play_audio.is_playing()
+            if STATUS_PLAY == True:
+                pass
+            else: 
+                self.play_audio.stop()   
+                self.play_audio.play()
 if __name__ == "__main__":
     my_detect = USB_DETECT()
     Thread(target = my_detect.usb_sink_detect).start()
     Thread(target = my_detect.usb_usb_detect).start()
+    Thread(target = my_detect.play_audio_loop).start()
 
