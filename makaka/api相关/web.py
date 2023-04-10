@@ -1,10 +1,12 @@
 '''
 简单的flask框架写的api,放在服务器上运行。
+接受json格式的post请求,返回json格式
 '''
 
 from flask import Flask, request
 import openai
-openai.api_key = "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"  
+import json
+openai.api_key = "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"  
 
 app = Flask(__name__)
 
@@ -27,11 +29,13 @@ def ask_gpt(prompt):
 
 @app.route('/', methods=['POST'])
 def hello_world():
-    # question = request.form['question']
-    # print(question)
-    # return ask_gpt(question)
-    print(request.form)
-    return 'hello'
+    print(request.json['question'])    # dict
+    question = request.json['question']
+    answer = ask_gpt(question)
+    data = json.dumps({'answer': answer}, sort_keys=True, indent=4, separators=(',', ': '))
+    return data
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
+
+

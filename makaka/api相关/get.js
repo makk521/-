@@ -4,7 +4,7 @@ const fun = async function() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({data: 'hello world'})
+            body: JSON.stringify({question: '写一个冒泡排序 python'})
         })
     let data = await res.json();
     console.log(data)
