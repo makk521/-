@@ -1,12 +1,14 @@
 '''
 简单的flask框架写的api,放在服务器上运行。
 接受json格式的post请求,返回json格式
+$ screen -S mysession
+$ python app.py
 '''
 
 from flask import Flask, request
 import openai
 import json
-openai.api_key = "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"  
+openai.api_key = "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"  
 
 app = Flask(__name__)
 
