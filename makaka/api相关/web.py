@@ -2,7 +2,7 @@
 简单的flask框架写的api,放在服务器上运行。
 接受json格式的post请求,返回json格式
 $ screen -S mysession
-$ python app.py
+$ python3 web.py
 '''
 
 from flask import Flask, request
