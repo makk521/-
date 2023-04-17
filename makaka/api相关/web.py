@@ -8,7 +8,7 @@ $ python3 web.py
 from flask import Flask, request
 import openai
 import json
-openai.api_key = "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"  
+openai.api_key = "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"  
 
 app = Flask(__name__)
 
