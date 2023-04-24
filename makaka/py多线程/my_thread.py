@@ -26,6 +26,7 @@ def func(msg):
         print(msg)
         time.sleep(1)   
 
+<<<<<<< HEAD
 if __name__ == '__main__':
     Thread(target = func,args=("a")).start()
     # Thread(target = func,args=("b")).start()
@@ -33,3 +34,8 @@ if __name__ == '__main__':
     while(1):
         print(1)
         time.sleep(1)
+=======
+# if __name__ == '__main__':
+#     Thread(target = func,args=("a",)).start()
+#     Thread(target = func,args=("b",)).start()
+>>>>>>> 38347124710651162689bcea762a2157db701119

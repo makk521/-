@@ -1,0 +1,6 @@
+
+sink_name_lsusb: Texas Instruments PCM2902 Audio Codec
+usb_name_lsusb: Realtek Bluetooth Radio
+sink_name_pacmd: alsa_output.usb-C-Media_Electronics_Inc._USB_PnP_Sound_Device-00.analog-stereo
+
+test_mp3_path: /home/pi/test.mp3

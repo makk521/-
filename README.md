@@ -11,6 +11,12 @@ dmesg  -w   # 打出系统log,且等待
 lsusb     # 列出当前usb设备
 journalctl -u  # -f
 
+# screen
+screen -S sessioname    # 创建一个名为sessioname的窗口
+screen -ls   # 列出所有窗口
+screen -r pid  # 重新加载窗口,pid由上面的
+ctrl a d    # 退出当前窗口
+
 ```
 
 ### 树莓派引脚操作
