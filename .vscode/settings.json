@@ -15,5 +15,17 @@
             "database": "${workspaceFolder:code-repository}/makaka/sqlite3操作/data.db"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./makaka",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "."
+    ]
 }
