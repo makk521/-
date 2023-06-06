@@ -1,19 +1,53 @@
 import threading
+import random
 import time
-class MyThread(threading.Thread):
-    def __init__(self, name, n):
-        #super(MyThread, self).__init__()
-        self.name = name
-        self.n = n
-    def run(self):
-        while True:
-            print("Thread ", self.name, "is running")
-            time.sleep(self.n)
-def main():
-    t1 = MyThread("t1", 3)
-    t2 = MyThread("t2", 2)
-    t1.start()
-    t2.start()
-if __name__ == "__main__":
-    print("嗨客网(www.haicoder.net)")
-    main()
+
+class VehicleThread(threading.Thread):
+   """Class representing a motor vehicle at an intersection"""
+
+   def __init__(self, threadName, event):
+        """Initializes thread"""
+
+        threading.Thread.__init__(self, name=threadName)
+
+       # ensures that each vehicle waits for a green light
+        self.threadEvent = event
+
+   def run(self):
+        """Vehicle waits unless/until light is green"""
+
+        # stagger arrival times
+        time.sleep(random.randrange(1, 10))
+
+        # prints arrival time of car at intersection
+        print ("%s arrived at %s" % \
+              (self.getName(), time.ctime(time.time())))
+
+        # wait for green light
+        self.threadEvent.wait()
+
+        # displays time that car departs intersection
+        print ("%s passes through intersection at %s" % \
+             (self.getName(), time.ctime(time.time())))
+ 
+
+greenLight = threading.Event()
+vehicleThreads = []
+
+# creates and starts ten Vehicle threads
+for i in range(1, 11):
+    vehicleThreads.append(VehicleThread("Vehicle" + str(i),                                      
+      greenLight)) 
+for vehicle in vehicleThreads:
+    vehicle.start()
+
+while threading.activeCount() > 1:
+    # sets the Event's flag to false -- block all incoming vehicles
+    greenLight.clear()
+    print ("RED LIGHT! at", time.ctime(time.time()))
+    time.sleep(3)
+
+    # sets the Event's flag to true -- awaken all waiting vehicles
+    print ("GREEN LIGHT! at", time.ctime(time.time()))
+    greenLight.set()
+    time.sleep(1)

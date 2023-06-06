@@ -1,5 +1,6 @@
 '''
 树莓派上两个button控制一个灯。点灯由单独一个线程负责.工作是处理status_que内容,当检测到按键按下时,将对应数据存入status_que.
+现象:按下按键6时执行led亮灯方式1,按下按键7时执行亮灯方式2(树莓派)
 '''
 import RPi.GPIO as GPIO
 import queue
