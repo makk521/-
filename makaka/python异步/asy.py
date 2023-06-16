@@ -178,21 +178,87 @@
 
 # asyncio.run(main())
 
+# import asyncio
+
+# async def my_coroutine():
+#     print("Running coroutine")
+#     await asyncio.sleep(1)
+#     a = 0 / 0
+#     return "Coroutine completed"
+
+# async def main():
+#     task = asyncio.create_task(my_coroutine())
+#     print("Task created")
+#     try:
+#         await my_coroutine()
+#     except Exception as ex:
+#         print(ex)
+#     if task.done():
+#         result = task.result()
+#         print(f"Task result: {result}")
+
+# asyncio.run(main())
+
+
+
+# import asyncio
+
+# async def my_coroutine():
+#     raise ValueError("An error occurred")
+
+# def handle_exception(task):
+#     try:
+#         task.result()  # 获取协程函数的返回结果，会引发异常
+#     except ValueError as e:
+#         print(f"Caught exception: {str(e)}")
+
+# async def main():
+#     task = asyncio.create_task(my_coroutine())
+#     task.add_done_callback(handle_exception)
+
+#     await asyncio.sleep(1)
+
+# asyncio.run(main())
+
+
+
 import asyncio
+Keep_Running = True
 
-async def my_coroutine():
-    print("Running coroutine")
-    await asyncio.sleep(1)
-    return "Coroutine completed"
+async def display_time():
+    global Keep_Running
+    try:
+        while(Keep_Running):
+            print('Coroutine keep running!')
+            await asyncio.sleep(1)
+    except asyncio.CancelledError:
+        print('Coroutine stop!')
+        Keep_Running = False
+    finally:
+        # 无论是否报错都会执行(跳出try中的循环后)
+        print('Coroutine stopped!')
+        Keep_Running = False
 
-async def main():
-    task = asyncio.create_task(my_coroutine())
-    print("Task created")
+async def main(cor):
+    task_cor = asyncio.create_task(cor)
+    # get_coro()返回的是协程函数
+    print(f'The current coroutine is {cor_test == task_cor.get_coro()}')
+    await asyncio.sleep(3)
+    # 取消task_cor，协程函数报错：asyncio.CancelledError
+    task_cor.cancel()
+    await task_cor
+  
+cor_test = display_time()
+asyncio.run(main(cor_test))
 
-    await asyncio.sleep(0.5)
 
-    if task.done():
-        result = task.result()
-        print(f"Task result: {result}")
-
-asyncio.run(main())
+# import time
+# status = True
+# try:
+#     while(status):
+#         print('here')
+#         time.sleep(1)
+# except ValueError:
+#     pass
+# finally:
+#     print('stop')
