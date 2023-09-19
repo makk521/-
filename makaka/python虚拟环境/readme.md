@@ -1,5 +1,7 @@
 
 ```shell
+sudo apt/yum install python3-venv  # 安装env工具
+
 python -m venv myenv   # 创建虚拟环境名为myenv
 source myenv/bin/activate  # 激活虚拟环境
 pip3 freeze > requirements.txt # 将安装的库及版本导出到txt文件中
