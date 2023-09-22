@@ -4,3 +4,6 @@
 
 ### 网络端口管理
 ``` netstat -anp |grep 8000 # 查找端口号 ```
+
+### 查看公网ip
+``` curl ifconfig.me ```
